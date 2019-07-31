@@ -15,7 +15,7 @@ namespace SaintSender
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (IsUserDataSaved())
+            if (File.Exists(@"AppData\login.dat"))
             {
                 UserData userData = DataService.DeSerializeLoginData();
                 Application.Run(new MainForm(new MailRepository("imap.gmail.com", 993, true, userData)));
@@ -24,11 +24,6 @@ namespace SaintSender
             {
                 Application.Run(new LoginForm());
             }
-        }
-
-        static bool IsUserDataSaved()
-        {
-            return File.Exists(@"AppData\login.dat");
         }
     }
 }

@@ -168,6 +168,7 @@
             this.Name = "LoginForm";
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Saint Sender";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

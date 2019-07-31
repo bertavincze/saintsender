@@ -43,5 +43,10 @@ namespace SaintSender
         {
             if (txtPassword.Text.Equals("Password")) txtPassword.Clear();
         }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
