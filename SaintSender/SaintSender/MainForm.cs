@@ -30,6 +30,7 @@ namespace SaintSender
 
             emailListView.Items.Clear();
             foldersListView.Items.Clear();
+            emailContentBrowser.ResetText();
             loadProgressBar.Value = 0;
 
             LoadFolderList();
