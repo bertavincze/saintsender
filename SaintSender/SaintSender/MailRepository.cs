@@ -1,6 +1,7 @@
 ﻿using MailKit;
 using MailKit.Net.Imap;
 using MailKit.Search;
+using MailKit.Security;
 using MimeKit;
 using System;
 using System.Runtime.InteropServices;
@@ -9,17 +10,17 @@ namespace SaintSender
 {
     public class MailRepository
     {
-        private readonly string mailServer, login, password;
+        private readonly UserData userData;
+        private readonly string mailServer;
         private readonly int port;
         private readonly bool ssl;
 
-        public MailRepository(string mailServer, int port, bool ssl, string login, string password)
+        public MailRepository(string mailServer, int port, bool ssl, UserData userData)
         {
             this.mailServer = mailServer;
             this.port = port;
             this.ssl = ssl;
-            this.login = login;
-            this.password = password;
+            this.userData = userData;
         }
 
         public int MaxEmails { get; set; }
@@ -32,7 +33,7 @@ namespace SaintSender
             {
                 client.Connect(mailServer, port, ssl);
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
-                client.Authenticate(login, password);
+                client.Authenticate(userData.Email, userData.Password);
 
                 IMailFolder inbox = client.Inbox;
                 inbox.Open(FolderAccess.ReadOnly);
@@ -47,6 +48,28 @@ namespace SaintSender
                 }
 
                 client.Disconnect(true);
+            }
+        }
+
+        public bool IsLoginSuccessfullyAuth()
+        {
+            using (ImapClient client = new ImapClient())
+            {
+                try
+                {
+                    client.Connect(mailServer, port, ssl);
+                    client.AuthenticationMechanisms.Remove("XOAUTH2");
+                    client.Authenticate(userData.Email, userData.Password);
+                    return true;
+                }
+                catch (AuthenticationException)
+                {
+                    return false;
+                }
+                finally
+                {
+                    client.Disconnect(true);
+                }
             }
         }
     }

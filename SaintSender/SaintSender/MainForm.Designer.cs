@@ -47,12 +47,13 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
             this.txtSearch.Location = new System.Drawing.Point(450, 67);
-            this.txtSearch.MaximumSize = new System.Drawing.Size(130, 27);
-            this.txtSearch.MinimumSize = new System.Drawing.Size(130, 27);
+            this.txtSearch.MaximumSize = new System.Drawing.Size(130, 17);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(130, 17);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(130, 17);
             this.txtSearch.TabIndex = 5;
             this.txtSearch.Text = "Enter text to search...";
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             // 
             // emailListView
             // 
@@ -217,10 +218,14 @@
             // 
             // loadProgressBar
             // 
+            this.loadProgressBar.FontSize = MetroFramework.MetroProgressBarSize.Small;
+            this.loadProgressBar.HideProgressText = false;
             this.loadProgressBar.Location = new System.Drawing.Point(619, 67);
             this.loadProgressBar.Name = "loadProgressBar";
             this.loadProgressBar.Size = new System.Drawing.Size(316, 17);
+            this.loadProgressBar.Style = MetroFramework.MetroColorStyle.Green;
             this.loadProgressBar.TabIndex = 10;
+            this.loadProgressBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -237,6 +242,7 @@
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnSync);
             this.Name = "MainForm";
+            this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Saint Sender";
             this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SaintSender
@@ -16,7 +14,21 @@ namespace SaintSender
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            if (IsUserDataSaved())
+            {
+                UserData userData = DataService.DeSerializeLoginData();
+                Application.Run(new MainForm(new MailRepository("imap.gmail.com", 993, true, userData)));
+            }
+            else
+            {
+                Application.Run(new LoginForm());
+            }
+        }
+
+        static bool IsUserDataSaved()
+        {
+            return File.Exists(@"AppData\login.dat");
         }
     }
 }

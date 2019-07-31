@@ -9,11 +9,11 @@ namespace SaintSender
     {
         private MailRepository mailRepository;
 
-        public MainForm(string email, string password)
+        public MainForm(MailRepository mailRepository)
         {
             InitializeComponent();
-            mailRepository = new MailRepository("imap.gmail.com", 993, true, email, password);
-            mailRepository.MaxEmails = 100;
+            this.mailRepository = mailRepository;
+            this.mailRepository.MaxEmails = 100;
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -32,6 +32,11 @@ namespace SaintSender
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
         }
     }
 }
