@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtEmail = new MetroFramework.Controls.MetroTextBox();
             this.iconUser = new FontAwesome.Sharp.IconButton();
             this.iconPassword = new FontAwesome.Sharp.IconButton();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new MetroFramework.Controls.MetroTextBox();
             this.btnSignIn = new FontAwesome.Sharp.IconButton();
             this.signInLabel = new MetroFramework.Controls.MetroLabel();
             this.rememberCheckBox = new MetroFramework.Controls.MetroCheckBox();
@@ -41,20 +41,44 @@
             // 
             this.txtEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
+            // 
+            // 
+            // 
+            this.txtEmail.CustomButton.Image = null;
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(208, 1);
+            this.txtEmail.CustomButton.Name = "";
+            this.txtEmail.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtEmail.CustomButton.TabIndex = 1;
+            this.txtEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtEmail.CustomButton.UseSelectable = true;
+            this.txtEmail.CustomButton.Visible = false;
+            this.txtEmail.Lines = new string[0];
             this.txtEmail.Location = new System.Drawing.Point(57, 142);
+            this.txtEmail.MaxLength = 32767;
             this.txtEmail.MinimumSize = new System.Drawing.Size(185, 27);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(234, 24);
-            this.txtEmail.TabIndex = 6;
-            this.txtEmail.Text = "Email address";
+            this.txtEmail.PasswordChar = '\0';
+            this.txtEmail.PromptText = "Email address";
+            this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtEmail.SelectedText = "";
+            this.txtEmail.SelectionLength = 0;
+            this.txtEmail.SelectionStart = 0;
+            this.txtEmail.ShortcutsEnabled = true;
+            this.txtEmail.Size = new System.Drawing.Size(234, 27);
+            this.txtEmail.TabIndex = 0;
+            this.txtEmail.UseSelectable = true;
+            this.txtEmail.WaterMark = "Email address";
+            this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             // 
             // iconUser
             // 
             this.iconUser.AutoSize = true;
             this.iconUser.FlatAppearance.BorderSize = 0;
+            this.iconUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.iconUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconUser.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconUser.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -65,7 +89,7 @@
             this.iconUser.Name = "iconUser";
             this.iconUser.Rotation = 0D;
             this.iconUser.Size = new System.Drawing.Size(26, 27);
-            this.iconUser.TabIndex = 8;
+            this.iconUser.TabIndex = 4;
             this.iconUser.TabStop = false;
             this.iconUser.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.iconUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -75,6 +99,8 @@
             // 
             this.iconPassword.AutoSize = true;
             this.iconPassword.FlatAppearance.BorderSize = 0;
+            this.iconPassword.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.iconPassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.iconPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconPassword.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -93,15 +119,36 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 9.5F);
+            // 
+            // 
+            // 
+            this.txtPassword.CustomButton.Image = null;
+            this.txtPassword.CustomButton.Location = new System.Drawing.Point(208, 1);
+            this.txtPassword.CustomButton.Name = "";
+            this.txtPassword.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.txtPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPassword.CustomButton.TabIndex = 1;
+            this.txtPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPassword.CustomButton.UseSelectable = true;
+            this.txtPassword.CustomButton.Visible = false;
+            this.txtPassword.Lines = new string[0];
             this.txtPassword.Location = new System.Drawing.Point(57, 188);
+            this.txtPassword.MaxLength = 32767;
             this.txtPassword.MinimumSize = new System.Drawing.Size(185, 27);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(234, 24);
-            this.txtPassword.TabIndex = 9;
-            this.txtPassword.Text = "Password";
+            this.txtPassword.PromptText = "Password";
+            this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.SelectionLength = 0;
+            this.txtPassword.SelectionStart = 0;
+            this.txtPassword.ShortcutsEnabled = true;
+            this.txtPassword.Size = new System.Drawing.Size(234, 27);
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.UseSelectable = true;
+            this.txtPassword.WaterMark = "Password";
+            this.txtPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             // 
             // btnSignIn
@@ -119,7 +166,7 @@
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Rotation = 0D;
             this.btnSignIn.Size = new System.Drawing.Size(102, 39);
-            this.btnSignIn.TabIndex = 11;
+            this.btnSignIn.TabIndex = 3;
             this.btnSignIn.Text = "Sign In";
             this.btnSignIn.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnSignIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -149,7 +196,7 @@
             this.rememberCheckBox.Name = "rememberCheckBox";
             this.rememberCheckBox.Size = new System.Drawing.Size(114, 19);
             this.rememberCheckBox.Style = MetroFramework.MetroColorStyle.Teal;
-            this.rememberCheckBox.TabIndex = 13;
+            this.rememberCheckBox.TabIndex = 2;
             this.rememberCheckBox.Text = "Remember Me";
             this.rememberCheckBox.UseSelectable = true;
             // 
@@ -176,10 +223,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtEmail;
+        private MetroFramework.Controls.MetroTextBox txtEmail;
         private FontAwesome.Sharp.IconButton iconUser;
         private FontAwesome.Sharp.IconButton iconPassword;
-        private System.Windows.Forms.TextBox txtPassword;
+        private MetroFramework.Controls.MetroTextBox txtPassword;
         private FontAwesome.Sharp.IconButton btnSignIn;
         private MetroFramework.Controls.MetroLabel signInLabel;
         private MetroFramework.Controls.MetroCheckBox rememberCheckBox;
