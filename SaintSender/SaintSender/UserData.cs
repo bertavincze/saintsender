@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SaintSender
 {
     [Serializable]
-    public struct UserData
+    public class UserData
     {
         public UserData(string email, string password)
         {
