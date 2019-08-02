@@ -136,7 +136,7 @@ namespace SaintSender
             }
         }
 
-        public void SendMail(string[] emailTo, string subject, string body, [Optional] string[] cc, [Optional] string[] bcc)
+        public void SendMail(string[] emailTo, string subject, string body, [Optional] string[] cc, [Optional] string[] bcc, [Optional] bool isReply, [Optional] bool isFwd, [Optional] MimeMessage originalEmail)
         {
             using (SmtpClient client = new SmtpClient())
             {
@@ -170,10 +170,124 @@ namespace SaintSender
                 message.From.Add(new MailboxAddress(UserData.Email));
                 message.Subject = subject;
 
+                if (isReply)
+                {
+                    message.InReplyTo = originalEmail.MessageId;
+                    message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+                    {
+                        Text = body + "<br><br>---<br><br>" + originalEmail.TextBody
+                    };
+                }
+                else if (isFwd)
+                {
+                    message.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = originalEmail.TextBody };
+                }
+                else
+                {
+                    message.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = body };
+                }
+
+               if (isFwd) { message.ResentMessageId = originalEmail.MessageId; }
+
+                client.Send(message);
+
+                client.Disconnect(true);
+            }
+        }
+
+        public void SendReply(MimeMessage originalEmail, string[] emailTo, string subject, string body, [Optional] string[] cc, [Optional] string[] bcc)
+        {
+            using (SmtpClient client = new SmtpClient())
+            {
+                client.Connect(mailServer, port, ssl);
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                client.Authenticate(UserData.Email, UserData.Password);
+
+                var message = new MimeMessage();
+                message.InReplyTo = originalEmail.MessageId;
+
+                foreach (var address in emailTo)
+                {
+                    message.To.Add(new MailboxAddress(address));
+                }
+
+                if (cc != null)
+                {
+                    foreach (var copy in cc)
+                    {
+                        message.Cc.Add(new MailboxAddress(copy));
+                    }
+                }
+
+                if (bcc != null)
+                {
+                    foreach (var secretCopy in bcc)
+                    {
+                        message.Bcc.Add(new MailboxAddress(secretCopy));
+                    }
+                }
+
+                message.From.Add(new MailboxAddress(UserData.Email));
+                message.Subject = subject;
+
                 message.Body = new TextPart("plain") { Text = body };
 
                 client.Send(message);
 
+                client.Disconnect(true);
+            }
+        }
+
+        public void MarkAsRead(MailInfo mail)
+        {
+            using (ImapClient client = new ImapClient())
+            {
+                client.Connect(mailServer, port, ssl);
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                client.Authenticate(UserData.Email, UserData.Password);
+
+                IMailFolder folder = client.GetFolder(mail.ParentFolder.FullName);
+                folder.Open(FolderAccess.ReadWrite);
+                folder.AddFlags(new List<UniqueId> { mail.Uid }, MessageFlags.Seen, true);
+                folder.Close();
+                client.Disconnect(true);
+            }
+        }
+
+        public void MarkAsUnRead(MailInfo mail)
+        {
+            using (ImapClient client = new ImapClient())
+            {
+                client.Connect(mailServer, port, ssl);
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                client.Authenticate(UserData.Email, UserData.Password);
+
+                IMailFolder folder = client.GetFolder(mail.ParentFolder.FullName);
+                folder.Open(FolderAccess.ReadWrite);
+                folder.RemoveFlags(new List<UniqueId> { mail.Uid }, MessageFlags.Seen, true);
+                folder.Close();
+                client.Disconnect(true);
+            }
+        }
+
+        public void StarEmail(MailInfo mail)
+        {
+            using (ImapClient client = new ImapClient())
+            {
+                client.Connect(mailServer, port, ssl);
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
+                client.Authenticate(UserData.Email, UserData.Password);
+
+                IMailFolder folder = client.GetFolder(mail.ParentFolder.FullName);
+                folder.Open(FolderAccess.ReadWrite);
+
+                var folders = client.GetFolders(new FolderNamespace('/', "[Gmail]"));
+                foreach (var item in folders)
+                {
+                    if (item.FullName.Equals(@"[Gmail]/Csillagozott") || item.FullName.Equals(@"[Gmail]/Starred")) folder.MoveTo(mail.Uid, client.GetFolder(item.FullName));
+                }
+
+                folder.Close();
                 client.Disconnect(true);
             }
         }

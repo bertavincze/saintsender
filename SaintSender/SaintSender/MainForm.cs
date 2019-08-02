@@ -98,7 +98,7 @@ namespace SaintSender
         private void LoadFolderItem(FolderInfo folder)
         {
             folderProgressBar.Maximum = mailRepository.NumOfFolders;
-            foldersListView.Items.Add(new ListViewItem(folder.MailFolder.Name + " (" + folder.FolderSize + ")") { ImageIndex = 0, Tag = folder.MailFolder.Name });
+            foldersListView.Items.Add(new ListViewItem(folder.MailFolder.FullName + " (" + folder.FolderSize + ")") { ImageIndex = 0, Tag = folder.MailFolder.Name });
             folderProgressBar.Increment(1);
         }
 
@@ -139,6 +139,7 @@ namespace SaintSender
                 {
                     button.Enabled = true;
                 }
+                mailRepository.MarkAsRead((MailInfo)SelectedEmail.Tag);
             }
         }
 
@@ -175,8 +176,45 @@ namespace SaintSender
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            NewMailForm newMailForm = new NewMailForm(mailRepository.UserData);
+            NewMailForm newMailForm = new NewMailForm(mailRepository.UserData, false, false);
             newMailForm.Show();
+        }
+
+        private void btnReply_Click(object sender, EventArgs e)
+        {
+            if (SelectedEmail != null)
+            {
+                NewMailForm newMailForm = new NewMailForm(mailRepository.UserData, true, false, (MailInfo)SelectedEmail.Tag);
+                newMailForm.Show();
+            }
+        }
+
+        private void btnReplyAll_Click(object sender, EventArgs e)
+        {
+            if (SelectedEmail != null)
+            {
+                NewMailForm newMailForm = new NewMailForm(mailRepository.UserData, true, false, (MailInfo)SelectedEmail.Tag);
+                newMailForm.Show();
+            }
+        }
+
+        private void btnFwd_Click(object sender, EventArgs e)
+        {
+            if (SelectedEmail != null)
+            {
+                NewMailForm newMailForm = new NewMailForm(mailRepository.UserData, false, true, (MailInfo)SelectedEmail.Tag);
+                newMailForm.Show();
+            }
+        }
+
+        private void btnMarkUnread_Click(object sender, EventArgs e)
+        {
+            if (SelectedEmail != null) mailRepository.MarkAsUnRead((MailInfo)SelectedEmail.Tag);
+        }
+
+        private void btnStar_Click(object sender, EventArgs e)
+        {
+            if (SelectedEmail != null) mailRepository.StarEmail((MailInfo)SelectedEmail.Tag);
         }
     }
 }

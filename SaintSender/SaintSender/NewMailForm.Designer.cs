@@ -306,6 +306,7 @@
             this.Name = "NewMailForm";
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "New Mail";
+            this.Load += new System.EventHandler(this.NewMailForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

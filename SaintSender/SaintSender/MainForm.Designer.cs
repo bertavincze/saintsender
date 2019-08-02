@@ -367,6 +367,7 @@
             this.btnReply.Text = "Reply";
             this.btnReply.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReply.UseVisualStyleBackColor = false;
+            this.btnReply.Click += new System.EventHandler(this.btnReply_Click);
             // 
             // btnFwd
             // 
@@ -386,6 +387,7 @@
             this.btnFwd.Text = "Forward";
             this.btnFwd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFwd.UseVisualStyleBackColor = false;
+            this.btnFwd.Click += new System.EventHandler(this.btnFwd_Click);
             // 
             // btnMarkUnread
             // 
@@ -405,6 +407,7 @@
             this.btnMarkUnread.Text = "Mark As Unread";
             this.btnMarkUnread.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMarkUnread.UseVisualStyleBackColor = false;
+            this.btnMarkUnread.Click += new System.EventHandler(this.btnMarkUnread_Click);
             // 
             // btnReplyAll
             // 
@@ -424,6 +427,7 @@
             this.btnReplyAll.Text = "Reply To All";
             this.btnReplyAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReplyAll.UseVisualStyleBackColor = false;
+            this.btnReplyAll.Click += new System.EventHandler(this.btnReplyAll_Click);
             // 
             // btnStar
             // 
@@ -443,6 +447,7 @@
             this.btnStar.Text = "Star";
             this.btnStar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStar.UseVisualStyleBackColor = false;
+            this.btnStar.Click += new System.EventHandler(this.btnStar_Click);
             // 
             // MainForm
             // 
