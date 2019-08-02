@@ -89,7 +89,7 @@
             this.txtSubject.CustomButton.Visible = false;
             this.txtSubject.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSubject.Lines = new string[0];
-            this.txtSubject.Location = new System.Drawing.Point(53, 73);
+            this.txtSubject.Location = new System.Drawing.Point(53, 108);
             this.txtSubject.MaxLength = 32767;
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.PasswordChar = '\0';
@@ -100,7 +100,7 @@
             this.txtSubject.SelectionStart = 0;
             this.txtSubject.ShortcutsEnabled = true;
             this.txtSubject.Size = new System.Drawing.Size(427, 28);
-            this.txtSubject.TabIndex = 0;
+            this.txtSubject.TabIndex = 1;
             this.txtSubject.UseSelectable = true;
             this.txtSubject.WaterMark = "Subject";
             this.txtSubject.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -122,7 +122,7 @@
             this.txtTo.CustomButton.Visible = false;
             this.txtTo.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtTo.Lines = new string[0];
-            this.txtTo.Location = new System.Drawing.Point(53, 107);
+            this.txtTo.Location = new System.Drawing.Point(53, 75);
             this.txtTo.MaxLength = 32767;
             this.txtTo.Name = "txtTo";
             this.txtTo.PasswordChar = '\0';
@@ -133,7 +133,7 @@
             this.txtTo.SelectionStart = 0;
             this.txtTo.ShortcutsEnabled = true;
             this.txtTo.Size = new System.Drawing.Size(139, 28);
-            this.txtTo.TabIndex = 1;
+            this.txtTo.TabIndex = 0;
             this.txtTo.UseSelectable = true;
             this.txtTo.WaterMark = "To";
             this.txtTo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -177,7 +177,7 @@
             this.txtCc.CustomButton.Visible = false;
             this.txtCc.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtCc.Lines = new string[0];
-            this.txtCc.Location = new System.Drawing.Point(198, 107);
+            this.txtCc.Location = new System.Drawing.Point(198, 75);
             this.txtCc.MaxLength = 32767;
             this.txtCc.Name = "txtCc";
             this.txtCc.PasswordChar = '\0';
@@ -188,7 +188,7 @@
             this.txtCc.SelectionStart = 0;
             this.txtCc.ShortcutsEnabled = true;
             this.txtCc.Size = new System.Drawing.Size(138, 28);
-            this.txtCc.TabIndex = 2;
+            this.txtCc.TabIndex = 1;
             this.txtCc.UseSelectable = true;
             this.txtCc.WaterMark = "Cc";
             this.txtCc.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -210,7 +210,7 @@
             this.txtBcc.CustomButton.Visible = false;
             this.txtBcc.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtBcc.Lines = new string[0];
-            this.txtBcc.Location = new System.Drawing.Point(343, 107);
+            this.txtBcc.Location = new System.Drawing.Point(342, 75);
             this.txtBcc.MaxLength = 32767;
             this.txtBcc.Name = "txtBcc";
             this.txtBcc.PasswordChar = '\0';
@@ -221,7 +221,7 @@
             this.txtBcc.SelectionStart = 0;
             this.txtBcc.ShortcutsEnabled = true;
             this.txtBcc.Size = new System.Drawing.Size(138, 28);
-            this.txtBcc.TabIndex = 3;
+            this.txtBcc.TabIndex = 2;
             this.txtBcc.UseSelectable = true;
             this.txtBcc.WaterMark = "Bcc";
             this.txtBcc.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -237,7 +237,7 @@
             this.iconTo.IconChar = FontAwesome.Sharp.IconChar.Users;
             this.iconTo.IconColor = System.Drawing.Color.Black;
             this.iconTo.IconSize = 20;
-            this.iconTo.Location = new System.Drawing.Point(23, 107);
+            this.iconTo.Location = new System.Drawing.Point(22, 75);
             this.iconTo.Name = "iconTo";
             this.iconTo.Rotation = 0D;
             this.iconTo.Size = new System.Drawing.Size(26, 27);
@@ -259,7 +259,7 @@
             this.iconSubject.IconChar = FontAwesome.Sharp.IconChar.EnvelopeOpenText;
             this.iconSubject.IconColor = System.Drawing.Color.Black;
             this.iconSubject.IconSize = 20;
-            this.iconSubject.Location = new System.Drawing.Point(23, 73);
+            this.iconSubject.Location = new System.Drawing.Point(22, 109);
             this.iconSubject.Name = "iconSubject";
             this.iconSubject.Rotation = 0D;
             this.iconSubject.Size = new System.Drawing.Size(26, 27);
